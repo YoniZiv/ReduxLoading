@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {select} from "@angular-redux/store";
+import {Actions} from "./actions";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  @select('login') public login;
+  public actions: Actions;
+
+  constructor(actions: Actions) {
+    this.actions = actions;
+    console.log(this.login);
+  }
+
 }
